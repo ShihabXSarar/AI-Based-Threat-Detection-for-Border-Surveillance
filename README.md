@@ -194,7 +194,5 @@ Roles: AI/edge, CV pipeline, systems, research, and ops
 ---
 
 ## 📄 License & Contact
-- License: *(add your license here)*  
-- Contact: *(email/phone/link here)*
-
-> For deeper detail, include `docs/Architecture_Diagram.svg`, `docs/Data_Pipeline_Flow.svg`, and `docs/Border_Threat_Detection_Technical_Documentation.md` in your repo.
+- License:  
+- Contact: *(shihab312417@gmail.com/01904267721)*
