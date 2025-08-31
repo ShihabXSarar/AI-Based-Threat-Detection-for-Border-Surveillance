@@ -194,5 +194,5 @@ Roles: AI/edge, CV pipeline, systems, research, and ops
 ---
 
 ## 📄 License & Contact
-- License:  
+- License: MIT License 
 - Contact: *(shihab312417@gmail.com/01904267721)*
