@@ -1,0 +1,43 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.venv2/
+venv/
+ENV/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+static/uploads/
+New_Model/MODEL_FILE/*.pt
+New_Model/MODEL_FILE/*.onnx
+data/raw/videos/
+runs/
+Plots/
+*.mp4
+*.avi
+*.mov
+!alerting_twilio_whatsapp.mp4
+!intro_12s.mp4
+!live_push_in_intro.mp4
+!live_push_out_intro.mp4
+!prototype_demo.mp4
+!prototype_demo2.mp4
+!thanks_outro.mp4
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+#model and datasets
+New_Model/*
