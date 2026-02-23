@@ -114,7 +114,6 @@ requirements.txt # Dependencies
 - **Shihab**: AI & System Architecture
 - **Joynal**: Edge Computing & Hardware
 - **Aditta**: Strategic Research
-- **Sumaiya**: UI/UX Development
 
 ---
 
