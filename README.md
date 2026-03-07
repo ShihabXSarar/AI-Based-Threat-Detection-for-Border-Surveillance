@@ -1,3 +1,13 @@
+---
+title: Falcon Ai Border Defence
+emoji: 🦅
+colorFrom: blue
+colorTo: red
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # 🦅 Falcon AI: Autonomous Border Surveillance System
 
 [![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
