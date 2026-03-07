@@ -107,14 +107,13 @@ app.py           # Application Entry Point
 requirements.txt # Dependencies
 .env             # Private Credentials (ignored by git)
 ```
-
+New_Model: https://drive.google.com/drive/folders/1V9yxQIh9rRLbxMk2BJ4SOECFBkOMckXv?usp=sharing
 ---
 
 ## 🤝 Tactical Team
 - **Shihab**: AI & System Architecture
 - **Joynal**: Edge Computing & Hardware
 - **Aditta**: Strategic Research
-- **Sumaiya**: UI/UX Development
 
 ---
 
