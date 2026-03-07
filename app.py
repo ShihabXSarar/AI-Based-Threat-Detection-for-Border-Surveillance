@@ -19,8 +19,16 @@ def _boot_detection():
     else:
         print("⚠️ YOLO model failed to load. Start analysis via dashboard once fixed.")
 
+# Boot background detection if running via a WSGI server or without flask auto-reloader
+if not app.debug or os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+    _boot_detection()
+
 
 if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    host = os.environ.get("HOST", "0.0.0.0")
+    debug_mode = os.environ.get("FLASK_DEBUG", "False").lower() in ("true", "1", "t")
+
     print("=" * 72)
     print("🦅 FALCON AI - BORDER DEFENSE SYSTEM (Modular Architecture)")
     print("=" * 72)
@@ -28,9 +36,9 @@ if __name__ == '__main__':
     print(f"📁 Uploads Directory: {os.path.abspath(Config.get_upload_path())}")
     print("=" * 72)
     _boot_detection()
-    app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
-    print("🚀 Application started on http://127.0.0.1:5000")
-    print("🔐 Login at http://127.0.0.1:5000/auth/login")
-    print("🔐 Register at http://127.0.0.1:5000/auth/register")
+    app.run(host=host, port=port, debug=debug_mode, threaded=True)
+    print(f"🚀 Application started on http://{host}:{port}")
+    print(f"🔐 Login at http://{host}:{port}/auth/login")
+    print(f"🔐 Register at http://{host}:{port}/auth/register")
     print("=" * 72)
     

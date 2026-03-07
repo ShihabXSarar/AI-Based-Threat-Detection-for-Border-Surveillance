@@ -25,8 +25,8 @@ class Config:
     ALLOWED_EXTENSIONS = {'mp4', 'avi', 'mov', 'mkv', 'webm'}
     
     # YOLO Model Configuration
-    MODEL_PATH = os.environ.get('MODEL_PATH') or "D://Shihab_files//AI_Based_Threat_Detection_for_Border_Surveillance//New_Model//MODEL_FILE//best.pt"
-    DEFAULT_SOURCE = os.environ.get('DEFAULT_SOURCE') or "D://Shihab_files//AI_Based_Threat_Detection_for_Border_Surveillance//New_Model//IN_OUT_VIDEO//16.mp4"
+    MODEL_PATH = os.environ.get('MODEL_PATH') or os.path.join(BASE_DIR, "New_Model", "MODEL_FILE", "best.pt")
+    DEFAULT_SOURCE = os.environ.get('DEFAULT_SOURCE') or os.path.join(BASE_DIR, "New_Model", "IN_OUT_VIDEO", "16.mp4")
     CONF = 0.35
     
     # Fence handling config
