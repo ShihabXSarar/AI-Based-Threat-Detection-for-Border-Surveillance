@@ -10,12 +10,12 @@ class Config:
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
     
     # Flask Configuration
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-development-secret-key-123')
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
     
     # MongoDB Configuration
     # Flask-PyMongo expects MONGO_URI specifically, so set both for clarity.
-    MONGO_URI = os.environ.get('MONGO_URI') or os.environ.get('MONGODB_URI')
+    MONGO_URI = os.environ.get('MONGO_URI') or os.environ.get('MONGODB_URI') or 'mongodb://localhost:27017/falcon_ai'
     MONGODB_URI = MONGO_URI
     MONGODB_DB = 'falcon_ai'
     
