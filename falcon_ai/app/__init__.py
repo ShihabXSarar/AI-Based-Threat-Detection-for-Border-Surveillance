@@ -50,6 +50,10 @@ def create_app(config_class=Config):
     )
     app.config.from_object(config_class)
     
+    # Handle reverse proxy (HuggingFace Spaces, Render, etc.)
+    from werkzeug.middleware.proxy_fix import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+    
     # Fix MONGO_URI to ensure database name is included
     raw_uri = app.config.get('MONGO_URI', '')
     fixed_uri = _ensure_db_in_uri(raw_uri, 'falcon_ai')
