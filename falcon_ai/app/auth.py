@@ -101,18 +101,23 @@ def register():
             flash('Password must be at least 6 characters.', 'error')
             return render_template('register.html')
         
-        # Check if user exists
-        if mongo.db.users.find_one({'$or': [{'username': username}, {'email': email}]}):
-            flash('Username or email already exists.', 'error')
+        try:
+            # Check if user exists
+            if mongo.db.users.find_one({'$or': [{'username': username}, {'email': email}]}):
+                flash('Username or email already exists.', 'error')
+                return render_template('register.html')
+            
+            # Create new user
+            password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+            user = User(username=username, email=email, password_hash=password_hash)
+            user.save()
+            
+            flash('Registration successful. Please log in.', 'success')
+            return redirect(url_for('auth.login'))
+        except Exception as e:
+            print(f'\u274c Registration DB error: {e}')
+            flash(f'Database connection error. Please check MONGO_URI configuration. Details: {e}', 'error')
             return render_template('register.html')
-        
-        # Create new user
-        password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-        user = User(username=username, email=email, password_hash=password_hash)
-        user.save()
-        
-        flash('Registration successful. Please log in.', 'success')
-        return redirect(url_for('auth.login'))
     
     return render_template('register.html')
 
@@ -131,14 +136,18 @@ def login():
             flash('Please enter both username and password.', 'error')
             return render_template('login.html')
         
-        user = User.get_by_username(username)
-        
-        if user and bcrypt.check_password_hash(user.password_hash, password):
-            login_user(user, remember=True)
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('main.dashboard'))
-        else:
-            flash('Invalid username or password.', 'error')
+        try:
+            user = User.get_by_username(username)
+            
+            if user and bcrypt.check_password_hash(user.password_hash, password):
+                login_user(user, remember=True)
+                next_page = request.args.get('next')
+                return redirect(next_page) if next_page else redirect(url_for('main.dashboard'))
+            else:
+                flash('Invalid username or password.', 'error')
+        except Exception as e:
+            print(f'\u274c Login DB error: {e}')
+            flash(f'Database connection error. Details: {e}', 'error')
     
     return render_template('login.html')
 
