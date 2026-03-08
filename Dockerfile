@@ -17,13 +17,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
-# Expose the application port
-EXPOSE 5000
+# Expose the application port (Hugging Face requires 7860)
+EXPOSE 7860
 
 # Set default environment variables
 ENV HOST=0.0.0.0
-ENV PORT=5000
+ENV PORT=7860
 ENV FLASK_DEBUG=False
 
 # Command to run the application using gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "--threads", "4", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "1", "--threads", "4", "app:app"]
