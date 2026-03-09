@@ -9,7 +9,7 @@ from .core import (
     get_system_stats, get_latest_alerts,
     last_alert_ts, global_alert_cooldown_until, system_stats
 )
-from ..config import Config
+from falcon_ai.config import Config
 
 bp = Blueprint('main', __name__)
 

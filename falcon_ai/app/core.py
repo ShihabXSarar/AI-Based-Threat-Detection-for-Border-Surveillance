@@ -10,7 +10,7 @@ from datetime import datetime
 from ultralytics import YOLO
 from twilio.rest import Client
 from . import mongo
-from ..config import Config
+from falcon_ai.config import Config
 
 # Global state
 model = None

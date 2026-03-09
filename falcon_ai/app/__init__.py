@@ -12,7 +12,7 @@ project_root = os.path.dirname(falcon_root)  # repo root
 templates_dir = os.path.join(project_root, 'templates')
 static_dir = os.path.join(project_root, 'static')
 
-from ..config import Config
+from falcon_ai.config import Config
 
 # Initialize extensions
 mongo = PyMongo()
